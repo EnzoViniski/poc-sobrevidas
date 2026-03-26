@@ -21,18 +21,19 @@ public class Paciente {
     private String numCartaoSus;
     private String telefoneCelular;
     private String telefoneResponsavel;
+    private String nomeMae;
     private String complemento;
     private String email;
     private String nome;
     @Enumerated(EnumType.STRING)
     private PacienteEnum sexo;
     private String endereco;
-    private int numEndereco;
+    private Integer numEndereco;
     private String estado;
     private String cidade;
-    private boolean ehTabagista;
-    private boolean ehEtilista;
-    private boolean temLesaoSuspeita;
+    private Boolean ehTabagista;
+    private Boolean ehEtilista;
+    private Boolean temLesaoSuspeita;
     private String bairro;
-    private boolean participaSmartMonitor;
+    private Boolean participaSmartMonitor;
 }
