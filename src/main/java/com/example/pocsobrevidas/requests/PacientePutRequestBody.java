@@ -2,8 +2,7 @@ package com.example.pocsobrevidas.requests;
 
 
 import com.example.pocsobrevidas.domain.PacienteEnum;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
