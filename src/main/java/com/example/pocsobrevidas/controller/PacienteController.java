@@ -2,12 +2,12 @@ package com.example.pocsobrevidas.controller;
 
 import com.example.pocsobrevidas.domain.Paciente;
 import com.example.pocsobrevidas.requests.PacienteNewPostRequestBody;
+import com.example.pocsobrevidas.requests.PacientePutRequestBody;
 import com.example.pocsobrevidas.service.PacienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -43,5 +43,17 @@ public class PacienteController {
     public ResponseEntity<String> importarArquivo(@RequestParam("file") MultipartFile file) {
         pacienteService.importarCsv(file);
         return ResponseEntity.ok("Arquivo importado com sucesso: " + file.getOriginalFilename() + "!");
+    }
+
+    @DeleteMapping(path = "{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id){
+        pacienteService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping(path = "{id}")
+    public ResponseEntity<Paciente> replace(@PathVariable long id,@RequestBody PacientePutRequestBody paciente) {
+        pacienteService.replace(id,paciente);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT) ;
     }
 }
