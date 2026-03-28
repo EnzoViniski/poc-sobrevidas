@@ -5,6 +5,7 @@ import com.example.pocsobrevidas.domain.PacienteEnum;
 import com.example.pocsobrevidas.mapper.PacienteMapper;
 import com.example.pocsobrevidas.repository.PacienteRepository;
 import com.example.pocsobrevidas.requests.PacienteNewPostRequestBody;
+import com.example.pocsobrevidas.requests.PacientePutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -112,5 +113,16 @@ public class PacienteService {
 
     public Paciente save(PacienteNewPostRequestBody pacienteNewPostRequestBody){
         return pacienteRepository.save(PacienteMapper.INSTANCE.toPaciente(pacienteNewPostRequestBody));
+    }
+
+    public void delete(long id){
+        pacienteRepository.delete(findById(id));
+    }
+
+    public void replace(long id, PacientePutRequestBody pacientePutRequestBody){
+        Paciente savedPaciente = findById(id);
+        Paciente paciente = PacienteMapper.INSTANCE.toPaciente(pacientePutRequestBody);
+        paciente.setId(savedPaciente.getId());
+        pacienteRepository.save(paciente);
     }
 }
