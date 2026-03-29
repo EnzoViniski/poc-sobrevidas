@@ -20,23 +20,24 @@ public class PacienteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Paciente>> list(){
+    public ResponseEntity<List<Paciente>> list() {
         return ResponseEntity.ok(pacienteService.list());
     }
 
+    @Operation(description = "Busca um paciente pelo ID")
     @GetMapping(path = "{id}")
-    public ResponseEntity<Paciente> findById(@PathVariable long id){
+    public ResponseEntity<Paciente> findById(@PathVariable long id) {
         return ResponseEntity.ok(pacienteService.findById(id));
     }
 
     @GetMapping(path = "/cpf/{cpf}")
-    public ResponseEntity<Paciente> findByCpf(@PathVariable String cpf){
+    public ResponseEntity<Paciente> findByCpf(@PathVariable String cpf) {
         return ResponseEntity.ok(pacienteService.findByCpf(cpf));
     }
 
     @PostMapping
     public ResponseEntity<Paciente> save(@RequestBody PacienteNewPostRequestBody paciente) {
-        return new ResponseEntity<>(pacienteService.save(paciente), HttpStatus.CREATED) ;
+        return new ResponseEntity<>(pacienteService.save(paciente), HttpStatus.CREATED);
     }
 
     @PostMapping("/importar")
@@ -46,14 +47,14 @@ public class PacienteController {
     }
 
     @DeleteMapping(path = "{id}")
-    public ResponseEntity<Void> delete(@PathVariable long id){
+    public ResponseEntity<Void> delete(@PathVariable long id) {
         pacienteService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(path = "{id}")
-    public ResponseEntity<Paciente> replace(@PathVariable long id,@RequestBody PacientePutRequestBody paciente) {
-        pacienteService.replace(id,paciente);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT) ;
+    public ResponseEntity<Paciente> replace(@PathVariable long id, @RequestBody PacientePutRequestBody paciente) {
+        pacienteService.replace(id, paciente);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
