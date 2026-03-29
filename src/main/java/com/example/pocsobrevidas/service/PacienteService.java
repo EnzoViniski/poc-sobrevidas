@@ -97,29 +97,29 @@ public class PacienteService {
         return texto;
     }
 
-    public Paciente findById(long id){
+    public Paciente findById(long id) {
         return pacienteRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente não Encontrado"));
     }
 
-    public Paciente findByCpf(String cpf){
+    public Paciente findByCpf(String cpf) {
         return pacienteRepository.findByCpf(cpf)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente não Encontrado"));
     }
 
-    public List<Paciente> list(){
+    public List<Paciente> list() {
         return pacienteRepository.findAll();
     }
 
-    public Paciente save(PacienteNewPostRequestBody pacienteNewPostRequestBody){
+    public Paciente save(PacienteNewPostRequestBody pacienteNewPostRequestBody) {
         return pacienteRepository.save(PacienteMapper.INSTANCE.toPaciente(pacienteNewPostRequestBody));
     }
 
-    public void delete(long id){
+    public void delete(long id) {
         pacienteRepository.delete(findById(id));
     }
 
-    public void replace(long id, PacientePutRequestBody pacientePutRequestBody){
+    public void replace(long id, PacientePutRequestBody pacientePutRequestBody) {
         Paciente savedPaciente = findById(id);
         Paciente paciente = PacienteMapper.INSTANCE.toPaciente(pacientePutRequestBody);
         paciente.setId(savedPaciente.getId());
