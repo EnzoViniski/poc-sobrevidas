@@ -38,4 +38,6 @@ public class Paciente {
     private Boolean temLesaoSuspeita;
     private String bairro;
     private Boolean participaSmartMonitor;
+
+
 }

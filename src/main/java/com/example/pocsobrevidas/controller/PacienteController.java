@@ -23,8 +23,8 @@ public class PacienteController {
 
     @Operation(description = "Busca todos os pacientes")
     @GetMapping
-    public ResponseEntity<List<Paciente>> list() {
-        return ResponseEntity.ok(pacienteService.list());
+    public ResponseEntity<List<Paciente>> listAll() {
+        return ResponseEntity.ok(pacienteService.listAll());
     }
 
     @Operation(description = "Busca um paciente pelo ID")
