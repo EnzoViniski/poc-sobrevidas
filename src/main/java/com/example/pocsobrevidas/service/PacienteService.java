@@ -24,6 +24,35 @@ import java.util.List;
 public class PacienteService {
     private final PacienteRepository pacienteRepository;
 
+    public Paciente findById(long id) {
+        return pacienteRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente não Encontrado"));
+    }
+
+    public Paciente findByCpf(String cpf) {
+        return pacienteRepository.findByCpf(cpf)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente não Encontrado"));
+    }
+
+    public List<Paciente> listAll() {
+        return pacienteRepository.findAll();
+    }
+
+    public Paciente save(PacienteNewPostRequestBody pacienteNewPostRequestBody) {
+        return pacienteRepository.save(PacienteMapper.INSTANCE.toPaciente(pacienteNewPostRequestBody));
+    }
+
+    public void delete(long id) {
+        pacienteRepository.delete(findById(id));
+    }
+
+    public void replace(long id, PacientePutRequestBody pacientePutRequestBody) {
+        Paciente savedPaciente = findById(id);
+        Paciente paciente = PacienteMapper.INSTANCE.toPaciente(pacientePutRequestBody);
+        paciente.setId(savedPaciente.getId());
+        pacienteRepository.save(paciente);
+    }
+
     public void importarCsv(MultipartFile file) {
         String line;
         List<Paciente> dataList = new ArrayList<>();
@@ -95,34 +124,5 @@ public class PacienteService {
         String regex = "\"";
         texto = texto.replaceAll(regex, "");
         return texto;
-    }
-
-    public Paciente findById(long id) {
-        return pacienteRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente não Encontrado"));
-    }
-
-    public Paciente findByCpf(String cpf) {
-        return pacienteRepository.findByCpf(cpf)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente não Encontrado"));
-    }
-
-    public List<Paciente> listAll() {
-        return pacienteRepository.findAll();
-    }
-
-    public Paciente save(PacienteNewPostRequestBody pacienteNewPostRequestBody) {
-        return pacienteRepository.save(PacienteMapper.INSTANCE.toPaciente(pacienteNewPostRequestBody));
-    }
-
-    public void delete(long id) {
-        pacienteRepository.delete(findById(id));
-    }
-
-    public void replace(long id, PacientePutRequestBody pacientePutRequestBody) {
-        Paciente savedPaciente = findById(id);
-        Paciente paciente = PacienteMapper.INSTANCE.toPaciente(pacientePutRequestBody);
-        paciente.setId(savedPaciente.getId());
-        pacienteRepository.save(paciente);
     }
 }
