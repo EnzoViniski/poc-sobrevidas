@@ -107,7 +107,7 @@ public class PacienteService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente não Encontrado"));
     }
 
-    public List<Paciente> list() {
+    public List<Paciente> listAll() {
         return pacienteRepository.findAll();
     }
 
