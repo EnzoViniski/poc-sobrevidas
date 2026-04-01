@@ -113,4 +113,20 @@ class PacienteServiceTest {
 
     }
 
+    @Test
+    @DisplayName("limparDado returns null when input is null, 'NULL' or empty quotes")
+    void limparDado_ReturnsNull_WhenInputIsValid(){
+        Assertions.assertNull(pacienteService.limparDado(null));
+        Assertions.assertNull(pacienteService.limparDado("NULL"));
+        Assertions.assertNull(pacienteService.limparDado("\"\""));
+    }
+
+    @Test
+    @DisplayName("limparDado removes quotes and returns clean string when input is valid")
+    void limparDado_ReturnsCleanString_WhenInputIsValid(){
+        String inputComAspas = "\"Enzo Viniski\"";
+        Assertions.assertEquals("Enzo Viniski", pacienteService.limparDado(inputComAspas));
+        String inputLimpo = "Goiânia";
+        Assertions.assertEquals("Goiânia", pacienteService.limparDado(inputLimpo));
+    }
 }

@@ -14,3 +14,4 @@ public abstract class PacienteMapper {
 
     public abstract Paciente toPaciente(PacientePutRequestBody pacientePutRequestBody);
 }
+
