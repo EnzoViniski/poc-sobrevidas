@@ -102,7 +102,9 @@ Basta executar a classe principal `PocSobrevidasApplication.java` diretamente na
 
 **Via Terminal (Maven):**
 Na raiz do projeto, execute o comando:
+```bash
 mvn spring-boot:run
+````
 *(A aplicação estará inicializada e disponível na porta 8080)*
 
 ###  População Inicial do Banco (Primeiro Uso)
