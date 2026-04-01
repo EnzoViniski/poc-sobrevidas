@@ -29,9 +29,9 @@ Repositório destinado à gerência de configuração e execução da Prova de C
     │   └── test/                    # suíte de testes unitários (JUnit 5 + Mockito)
     │       └── java/
     │           └── com/example/pocsobrevidas/
-    │               ├── controller/ 
-    │               ├── repository/
-    │               ├── service/ 
+    │               ├── controller/  # testes unitários dos endpoints e validação de respostas HTTP
+    │               ├── repository/  # testes de persistência e consultas à base de dados em memória (H2)
+    │               ├── service/     # testes das regras de negócio isolados com Mockito
     │               └── util/        # factory classes (Creators) para isolamento de testes
     ├── docker-compose.yml           # configuração dos serviços Docker (PostgreSQL)
     └── pom.xml                      # arquivo de gerenciamento de dependências do Maven
