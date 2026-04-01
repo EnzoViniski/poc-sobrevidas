@@ -6,6 +6,7 @@ import com.example.pocsobrevidas.requests.PacientePutRequestBody;
 import com.example.pocsobrevidas.service.PacienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -46,7 +47,7 @@ public class PacienteController {
     }
 
     @Operation(description = "Importa o arquivo CSV pro banco de dados")
-    @PostMapping("/importar")
+    @PostMapping(path = "/importar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> importarArquivo(@RequestParam("file") MultipartFile file) {
         pacienteService.importarCsv(file);
         return ResponseEntity.ok("Arquivo importado com sucesso: " + file.getOriginalFilename() + "!");
