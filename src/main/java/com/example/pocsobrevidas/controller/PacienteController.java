@@ -29,13 +29,13 @@ public class PacienteController {
     }
 
     @Operation(description = "Busca um paciente pelo ID")
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "/buscar/{id}")
     public ResponseEntity<Paciente> findById(@PathVariable long id) {
         return ResponseEntity.ok(pacienteService.findById(id));
     }
 
     @Operation(description = "Busca um paciente pelo CPF")
-    @GetMapping(path = "/cpf/{cpf}")
+    @GetMapping(path = "/buscar/cpf/{cpf}")
     public ResponseEntity<Paciente> findByCpf(@PathVariable String cpf) {
         return ResponseEntity.ok(pacienteService.findByCpf(cpf));
     }
@@ -54,14 +54,14 @@ public class PacienteController {
     }
 
     @Operation(description = "Deleta um paciente pelo ID")
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "/deletar/{id}")
     public ResponseEntity<Void> delete(@PathVariable long id) {
         pacienteService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @Operation(description = "Atualiza os dados de um paciente pelo ID")
-    @PutMapping(path = "{id}")
+    @PutMapping(path = "/atualizar/{id}")
     public ResponseEntity<Paciente> replace(@PathVariable long id, @RequestBody PacientePutRequestBody paciente) {
         pacienteService.replace(id, paciente);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
