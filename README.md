@@ -109,7 +109,7 @@ mvn spring-boot:run
 
 ###  População Inicial do Banco (Primeiro Uso)
 
-Para facilitar a avaliação e os testes da API, disponibilizamos um arquivo `pacientes.csv` na raiz deste repositório contendo uma carga inicial de dados reais/fictícios.
+Para facilitar a avaliação e os testes da API, disponibilizei um arquivo `pacientes.csv` na raiz deste repositório contendo uma carga inicial de dados reais/fictícios.
 
 Para popular seu banco de dados local rapidamente em menos de 1 minuto:
 1. Com a aplicação rodando, acesse o **Swagger UI**: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
