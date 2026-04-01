@@ -126,7 +126,7 @@ Com a aplicação em execução, acesse a documentação através do navegador:
 
 Lá, você encontrará todos os detalhes dos contratos de requisição e resposta para a API, incluindo:
 * `POST /pacientes/importar`: Upload `multipart/form-data` do CSV para inserção em lote.
-* `GET /pacientes/buscar?nome={nome}`: Busca filtrada por parte do nome (Ignora maiúsculas e minúsculas).
+* `GET /pacientes/buscar/cpf/{cpf}`: Busca filtrada por cpf.
 * Operações padrão de CRUD (`GET` listagem e por ID, `POST` criação manual, `PUT` atualização e `DELETE`).
 
 ##  Testes
