@@ -10,6 +10,14 @@ Repositório destinado à gerência de configuração e execução da Prova de C
 - Maven versão 3.8+ (ou utilizar o Wrapper embutido)
 - Docker e Docker Compose
 - Garantir que o Docker não precise de `sudo` para execução dos contêineres em ambientes Linux.
+- Spring Boot 3.4.0
+- Spring Data JPA
+- PostgreSQL (Produção/Dev)
+- H2 Database (Testes)
+- MapStruct (Mapeamento de DTOs)
+- Lombok (Produtividade)
+- SpringDoc OpenAPI 3 (Swagger)
+- JUnit 5 & Mockito (Testes Unitários e de Integração)
 
 ## Organização do projeto (diretórios)
 
